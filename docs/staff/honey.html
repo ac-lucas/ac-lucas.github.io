@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="EECS 183" />
+  <meta name="keywords"
+    content="EECS183, EECS 183, Elementary Programming Concepts, University of Michigan Computer Science" />
+  <title>EECS 183</title>
+  <link rel="stylesheet" type="text/css" href="../semantic/semantic.min.css" />
+  <link href="https://umich.edu/favicon.ico" rel="shortcut icon" />
+
+  <style>
+    /* This fixes a bug in Semantic UI on iOS that breaks scrolling back to
+     * the top by tapping the status bar.
+     * https://github.com/Semantic-Org/Semantic-UI/issues/1985#issuecomment-110051913
+     */
+    html,
+    body {
+      height: initial;
+    }
+
+    img.icon {
+      width: 60px !important;
+      height: 60px !important;
+      text-align: center;
+    }
+    .sidebar {
+      background-color: #343c4c !important;
+      padding: 0px !important;
+    }
+
+    .sidebar .item {
+      color: white !important;
+    }
+    .sidebar .item h2 {
+      font-weight: lighter;
+      font-family: "courier";
+    }
+
+
+    .menu .item {
+      padding: 10px !important;
+      text-align: right !important;
+    }
+
+    .menu .item:hover {
+      background-color: white !important;
+    }
+
+    .sidebar .item:hover {
+      color: #343c4c !important;
+    }
+
+    .staff
+    {
+      padding: 7px !important;
+      margin-right: 12px !important;
+    }
+    .message a {
+      text-decoration: underline;
+    }
+
+    .card .header {
+      font-size: 1.1em !important;
+    }
+
+    .card .content {
+      padding: .5em !important;
+      padding-top: .8em !important;
+    }
+
+    .row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
+
+  .staff-picture {
+    width: 50px !important;
+    height: 50px !important;
+  }
+}
+  </style>
+</head>
+
+<body>
+
+  <!-- Main page  -->
+  <div class="pusher">
+    <div class="ui text container">
+      <button class="ui left floated icon button" onclick="window.location.href='../staff.html'">
+        <i class="angle left icon"></i>
+        Back to Staff Labs
+      </button>
+
+      <table style="margin-top: 1em;">
+        <tr>
+          <td><img src="../img/llama.jpg" width="150px"/></td>
+          <td style="margin-left: 1em">
+            <h1>Peter Honeyman</h1>
+            <p><i>Professor, Fall 2020</i></p>
+
+          </td>
+        </tr>
+      </table>
+
+
+<h1> Lecture Information </h1>
+<ul>
+  <li>
+    <p>Lecture Sections: 001, 006 </p>
+  </li>
+  <li>
+    <p>IDE: XCode/Mac</p>
+  </li>
+</ul>
+<div class="ui section divider"></div>
+      <h1> About Me </h1>
+
+<p><b>Pronouns:</b> (he/him/his)</p>
+<p><b>Hometown:</b> Detroit, Michigan</p>
+<p><b>Education:</b> Cass Tech, Michigan (BGS), Princeton (Ph.D.)</p>
+<p><b>Why I teach:</b> It’s a satisfying way to make a living.</p>
+<p><b>Ask me about:</b> #A2Council, mix tapes, file systems, getting away</p>
+<div class="row">
+<div class="column">
+<img class="staff-picture" src="../img/lobster.png" alt="ia kirtana choragudi">
+</div>
+</div>
+
+        <!-- This Week section -->
+
+    </div><!-- ui text container -->
+    <br />
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script src="../semantic/semantic.min.js"></script>
+
+  <script>
+    (function () {
+      renderSidebar();
+    })();
+
+
+    function isSmallScreen() {
+      return screen.width < 900;
+    }
+
+    function renderSidebar() {
+      $sidebar = $('.ui.sidebar');
+      $sidebar.sidebar({
+        dimPage: false,
+        transition: 'overlay',
+        mobileTransition: 'overlay',
+        exclusive: false,
+        closable: false
+      });
+      $sidebar.sidebar('attach events', '#left-sidebar-toggle');
+
+      if (!isSmallScreen()) {
+        $sidebar.sidebar('toggle');
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>

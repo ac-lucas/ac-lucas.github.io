@@ -1,0 +1,965 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="EECS 183" />
+  <meta name="keywords"
+    content="EECS183, EECS 183, Elementary Programming Concepts, University of Michigan Computer Science" />
+  <title>EECS 183</title>
+  <link rel="stylesheet" type="text/css" href="semantic/semantic.min.css" />
+  <link href="https://umich.edu/favicon.ico" rel="shortcut icon" />
+  <style>
+    /* This fixes a bug in Semantic UI on iOS that breaks scrolling back to
+     * the top by tapping the status bar.
+     * https://github.com/Semantic-Org/Semantic-UI/issues/1985#issuecomment-110051913
+     */
+    html,
+    body {
+      height: initial;
+      box-sizing: border-box !important;
+    }
+
+    img.icon {
+      width: 60px !important;
+      height: 60px !important;
+      text-align: center;
+    }
+    .sidebar {
+      background-color: #343c4c !important;
+      padding: 0px !important;
+    }
+
+    .sidebar .item {
+      color: white !important;
+    }
+
+    .sidebar .item h2 {
+      font-weight: lighter;
+      font-family: "courier";
+    }
+    .menu .item {
+      padding: 10px !important;
+      text-align: right !important;
+    }
+
+    .menu .item:hover {
+      background-color: white !important;
+    }
+
+    .sidebar .item:hover {
+      color: #343c4c !important;
+    }
+
+    .staff
+    {
+      padding: 7px !important;
+      margin-right: 12px !important;
+    }
+    .message a {
+      text-decoration: underline;
+    }
+
+  .collapsible h2:before {
+    content: '\002B';
+    font-weight: bold;
+    float: none;
+    margin-left: 5px;
+  }
+
+  .collapsible h2:hover {
+    cursor: pointer;
+  }
+
+
+.active h2:before {
+  content: "\2212";
+}
+
+.lillian-icon {
+  text-align: center;
+}
+
+.vote  {
+
+  margin-left: auto;
+  margin-right: auto;
+  display: none;
+  overflow: hidden;
+}
+
+.vote img {
+  height: auto;
+  width: 100%;
+}
+    .card .header {
+      font-size: 1.1em !important;
+    }
+
+    .card .content {
+      padding: .5em !important;
+      padding-top: .8em !important;
+    }
+
+    .card .week {
+      box-shadow: none !important;
+    }
+
+    .row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+  .staff-picture {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  </style>
+</head>
+
+<body>
+  <!--Navigation bar-->
+  <div class="ui left vertical sidebar labeled icon menu">
+      <a class="item" onclick="window.location.href='index.html'" target="_blank">
+      <h2>Home</h2>
+    </a>
+
+    <a class="item" onclick="window.location.href='staff.html'" target="_blank">
+      <h2>Staff Labs</h2>
+    </a>
+
+    <a class="item" href="https://piazza.com/class/kdhi9admydr1od" target="_blank">
+      <h2>Piazza</h2>
+    </a>
+    <a class="item" href="http://eecsoh.org" target="_blank">
+      <h2>Office Hours</h2>
+    </a>
+    <a class="item"
+      href="https://docs.google.com/forms/d/e/1FAIpQLScOo-IgJymwcIPgY-Fk1fTsvlyz_NgUQlbYeqiQFFVDDaJEAw/viewform?usp=sf_link"
+      target="_blank">
+      <h2>Admin Form</h2>
+    </a>
+    <a class="item" href="https://drive.google.com/drive/u/0/folders/1I-8wvu4m6i7ZcMw8ppUM9K5plort5mXU" target="_blank">
+    <h2>Files</h2>
+    </a>
+    <!--  <a class="item" href="https://autograder.io/web/course/78" target="_blank">
+      <h2>Autograder</h2>
+    </a>
+  -->
+    <a class="item" href="https://ecoach.ai.umich.edu/coach/79/home/" target="_blank">
+
+      <h2>ECoach</h2>
+    </a>
+    <a class="item" href="https://www.gradescope.com/courses/154563" target="_blank">
+
+      <h2>Gradescope</h2>
+    </a>
+    <a class="item" href="https://learn.zybooks.com/zybook/UMICHEECS183Fall2020" target="_blank">
+
+      <h2>zyBooks</h2>
+    </a>
+    <a class="item" href="https://codelab.turingscraft.com/courses" target="_blank">
+
+      <h2>CodeLab</h2>
+    </a>
+    <a class="item" href="https://lobster.eecs.umich.edu" target="_blank">
+
+      <h2>Lobster</h2>
+    </a>
+  </div>
+<!--end of Navigation bar-->
+
+
+  <!-- Main page  -->
+  <div class="pusher">
+    <div class="ui text container">
+      <button class="ui right floated icon button" id="left-sidebar-toggle">
+         <i class="bars icon"></i>
+       </button>
+
+      <table style="margin-top: 1em;">
+        <tr>
+          <td>
+            <div class="lillian-icon">
+              <img src="img/llama.jpg" width="150px"/>
+              <a class="staff" href="staff/lillian.html" target="_blank"><br><i>Lillian the Llama</i></a>
+            </div>
+          </td>
+          <td style="margin-left: 1em">
+            <h1>EECS 183: Elementary Programming Concepts</h1>
+            <p><i>Fall 2020</i></p>
+            Learn to code in C++ and Python.
+          </td>
+        </tr>
+      </table>
+
+      <div style="font-size: small;">
+        <!-- This Week section -->
+<div class="styles_deadlinesContainer_3WP"><div class="styles_deadlinesHeader_pOG"><h2>Deadlines</h2><span class="styles_deadlinesScheduleLink_3oV"><a href="/schedule">Schedule</a><!-- react-text: 118 --> <!-- /react-text --><i class="fa fa-lg fa-angle-right"></i></span></div>
+<div style="height: 404.5px;">
+  <div class="styles_deadlinesList_1AC">
+    <div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D">
+      <div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx">
+        <div class="styles_dot_1Tb"></div>
+        <div class="styles_day_2ds">Thu</div>
+        <div class="styles_date_wP1">9</div>
+      </div><div class="styles_detailContainer_1fd">
+        <div class="styles_time_1lE">By lecture on Thursday 1/9</div>
+        <div class="styles_title_2lm">Syllabus</div></div></div></div>
+        <div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D">
+          <div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Sat</div><div class="styles_date_wP1">11</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">6:00 PM on Saturday 1/11</div><div class="styles_title_2lm">Assignment 1 due</div></div></div>
+        </div><div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Tue</div><div class="styles_date_wP1">14</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">By lecture on Tuesday 1/14</div>
+        <div class="styles_title_2lm">zyBooks Chapter 1 Sections 1-7</div>
+      </div></div></div>
+      <div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Thu</div><div class="styles_date_wP1">16</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">By lecture on Thursday 1/16</div><div class="styles_title_2lm">zyBooks Chapter 2 Sections 1–14</div></div></div></div>
+      <div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Sat</div><div class="styles_date_wP1">18</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">6:00 PM on Saturday 1/18</div><div class="styles_title_2lm">Lab 1 due</div></div></div></div>
+      <div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Sat</div><div class="styles_date_wP1">18</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">6:00 PM on Saturday 1/18</div><div class="styles_title_2lm">Assignment 2 due</div></div></div></div>
+      <div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Tue</div><div class="styles_date_wP1">21</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">By lecture on Tuesday 1/21</div><div class="styles_title_2lm">zyBooks Chapter 3 Sections 1–6</div></div></div></div>
+      <div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Thu</div><div class="styles_date_wP1">23</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">By lecture on Thursday 1/23</div><div class="styles_title_2lm">zyBooks Chapter 3 Sections 7–9, Chapter 2 Sections 15-17</div></div></div></div>
+      <div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Fri</div><div class="styles_date_wP1">24</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">6:00 PM on Friday 1/24</div><div class="styles_title_2lm">Project 1 due</div></div></div></div>
+      <div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Tue</div><div class="styles_date_wP1">28</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">Tuesday 1/28</div><div class="styles_title_2lm">Add/Drop deadline</div></div></div></div>
+      <div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Tue</div><div class="styles_date_wP1">28</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">By lecture on Tuesday 1/28</div><div class="styles_title_2lm">zyBooks Chapter 4 Sections 1–10</div></div></div></div>
+      <div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Thu</div><div class="styles_date_wP1">30</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">By lecture on Thursday 1/30</div><div class="styles_title_2lm">zyBooks Chapter 5 Sections 1–4</div></div></div></div>
+      <div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Fri</div><div class="styles_date_wP1">31</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">Friday 1/31</div><div class="styles_title_2lm">Last day to request alternate time for Exam 1</div></div></div></div>
+      <div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Sat</div><div class="styles_date_wP1">1</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">6:00 PM on Saturday 2/1</div><div class="styles_title_2lm">Lab 2 due</div></div></div></div>
+      <div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Sat</div><div class="styles_date_wP1">1</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">6:00 PM on Saturday 2/1</div><div class="styles_title_2lm">Assignment 3 due</div></div></div></div>
+      <div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Tue</div><div class="styles_date_wP1">4</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">By lecture on Tuesday 2/4</div><div class="styles_title_2lm">zyBooks Chapter 5 Sections 5-10</div></div></div></div>
+      <div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Thu</div><div class="styles_date_wP1">6</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">By lecture on Thursday 2/6</div><div class="styles_title_2lm">zyBooks Chapter 4 Sections 11–13</div></div></div></div>
+      <div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Fri</div><div class="styles_date_wP1">7</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">6:00 PM on Friday 2/7</div><div class="styles_title_2lm">Project 2 due</div></div></div></div>
+      <div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Sat</div><div class="styles_date_wP1">8</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">6:00 PM on Saturday 2/8</div><div class="styles_title_2lm">Lab 3 due</div></div></div></div>
+      <div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Tue</div><div class="styles_date_wP1">11</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">By lecture on Tuesday 2/11</div><div class="styles_title_2lm">zyBooks Chapter 3 Sections 10–13</div></div></div></div>
+      <div class="styles_deadlineContainer_2B8"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Thu</div><div class="styles_date_wP1">13</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">By lecture on Thursday 2/13</div><div class="styles_title_2lm">No required reading</div></div></div></div>
+      <div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Sat</div><div class="styles_date_wP1">15</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">6:00 PM on Saturday 2/15</div><div class="styles_title_2lm">Lab 4 due</div></div></div></div>
+      <div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Sat</div><div class="styles_date_wP1">15</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">6:00 PM on Saturday 2/15</div><div class="styles_title_2lm">Assignment 4 due</div></div></div></div>
+      <div class="styles_deadlineContainer_2B8"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Sun</div><div class="styles_date_wP1">16</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">6:00 PM on Sunday 2/16</div><div class="styles_title_2lm">Exam 1 Review @6:00 pm</div></div></div></div>
+      <div class="styles_deadlineContainer_2B8"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Tue</div><div class="styles_date_wP1">18</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">By lecture on Tuesday 2/18</div><div class="styles_title_2lm">No required reading</div></div></div></div>
+      <div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Tue</div><div class="styles_date_wP1">18</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">6:00 PM on Tuesday 2/18</div><div class="styles_title_2lm">Exam 1 at 6pm</div></div></div></div>
+      <div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Tue</div><div class="styles_date_wP1">18</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">Tuesday 2/18</div><div class="styles_title_2lm">Exam 1 - Alternate</div></div></div></div><div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Thu</div><div class="styles_date_wP1">20</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">By lecture on Thursday 2/20</div><div class="styles_title_2lm">zyBooks Chapter 6 Sections 1–8, 12-15</div></div></div></div><div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Tue</div><div class="styles_date_wP1">25</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">By lecture on Tuesday 2/25</div><div class="styles_title_2lm">zyBooks Chapter 6 Sections 9–11</div></div></div></div><div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Thu</div><div class="styles_date_wP1">27</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">By lecture on Thursday 2/27</div><div class="styles_title_2lm">zyBooks Chapter 7 Sections 1–6</div></div></div></div><div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Fri</div><div class="styles_date_wP1">28</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">6:00 PM on Friday 2/28</div><div class="styles_title_2lm">Project 3 due</div></div></div></div><div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Mon</div><div class="styles_date_wP1">9</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">6:00 PM on Monday 3/9</div><div class="styles_title_2lm">Lab 5 due</div></div></div></div><div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Mon</div><div class="styles_date_wP1">9</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">6:00 PM on Monday 3/9</div><div class="styles_title_2lm">Assignment 5 due</div></div></div></div><div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Mon</div><div class="styles_date_wP1">9</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">6:00 PM on Monday 3/9</div><div class="styles_title_2lm">Last day to request alternate time for Exam 2</div></div></div></div><div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Tue</div><div class="styles_date_wP1">10</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">By lecture on Tuesday 3/10</div><div class="styles_title_2lm">zyBooks Chapter 8 Sections 1–3</div></div></div></div><div class="styles_deadlineContainer_2B8"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Thu</div><div class="styles_date_wP1">12</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">By lecture on Thursday 3/12</div><div class="styles_title_2lm">No lecture - No required reading</div></div></div></div><div class="styles_deadlineContainer_2B8"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Thu</div><div class="styles_date_wP1">12</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">By lecture on Thursday 3/12</div><div class="styles_title_2lm">No lecture - No required reading</div></div></div></div><div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Tue</div><div class="styles_date_wP1">17</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">By lecture on Tuesday 3/17</div><div class="styles_title_2lm">zyBooks Chapter 8 Sections 4-6</div></div></div></div><div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Tue</div><div class="styles_date_wP1">17</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">By lecture on Tuesday 3/17</div><div class="styles_title_2lm">zyBooks Chapter 3 Sections 14-16</div></div></div></div><div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Tue</div><div class="styles_date_wP1">24</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">By lecture on Tuesday 3/24</div><div class="styles_title_2lm">zyBooks Chapter 8 Sections 8-9</div></div></div></div><div class="styles_deadlineContainer_2B8"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Thu</div><div class="styles_date_wP1">26</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">By lecture on Thursday 3/26</div><div class="styles_title_2lm">No required reading</div></div></div></div><div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Sat</div><div class="styles_date_wP1">28</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">6:00 PM on Saturday 3/28</div><div class="styles_title_2lm">Lab 6 due</div></div></div></div><div class="styles_deadlineContainer_2B8"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Tue</div><div class="styles_date_wP1">31</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">By lecture on Tuesday 3/31</div><div class="styles_title_2lm">No required reading</div></div></div></div><div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Thu</div><div class="styles_date_wP1">2</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">By lecture on Thursday 4/2</div><div class="styles_title_2lm">zyBooks Chapter 17</div></div></div></div><div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Fri</div><div class="styles_date_wP1">3</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">6:00 PM on Friday 4/3</div><div class="styles_title_2lm">Project 4 due</div></div></div></div><div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Sat</div><div class="styles_date_wP1">4</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">6:00 PM on Saturday 4/4</div><div class="styles_title_2lm">Assignment 6 due</div></div></div></div><div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Tue</div><div class="styles_date_wP1">7</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">By lecture on Tuesday 4/7</div><div class="styles_title_2lm">zyBooks Chapter 18</div></div></div></div><div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Thu</div><div class="styles_date_wP1">9</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">By lecture on Thursday 4/9</div><div class="styles_title_2lm">zyBooks Chapter 19</div></div></div></div><div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Sat</div><div class="styles_date_wP1">11</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">Saturday 4/11</div><div class="styles_title_2lm">Lab 7 due</div></div></div></div><div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Tue</div><div class="styles_date_wP1">14</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">By lecture on Tuesday 4/14</div><div class="styles_title_2lm">zyBooks Chapter 20</div></div></div></div><div class="styles_deadlineContainer_2B8"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Thu</div><div class="styles_date_wP1">16</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">By lecture on Thursday 4/16</div><div class="styles_title_2lm">No required reading</div></div></div></div><div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Fri</div><div class="styles_date_wP1">17</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">6:00 PM on Friday 4/17</div><div class="styles_title_2lm">Project 5 due</div></div></div></div><div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Sat</div><div class="styles_date_wP1">18</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">6:00 PM on Saturday 4/18</div><div class="styles_title_2lm">Assignment 7 due</div></div></div></div><div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Mon</div><div class="styles_date_wP1">20</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">Monday 4/20</div><div class="styles_title_2lm">Exam 2  - Online</div></div></div></div><div class="styles_deadlineContainer_2B8"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Tue</div><div class="styles_date_wP1">21</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">By lecture on Tuesday 4/21</div><div class="styles_title_2lm">No required reading</div></div></div></div><div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Tue</div><div class="styles_date_wP1">21</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">6:00 PM on Tuesday 4/21</div><div class="styles_title_2lm">Assignment 8 due</div></div></div></div><div class="styles_deadlineContainer_2B8 styles_deadlineLink_a_D"><div class="styles_deadline_GFD"><div class="styles_dateContainer_1tx"><div class="styles_dot_1Tb"></div><div class="styles_day_2ds">Tue</div><div class="styles_date_wP1">21</div></div><div class="styles_detailContainer_1fd"><div class="styles_time_1lE">Tuesday 4/21</div><div class="styles_title_2lm">UPDATED withdrawal deadline for all courses.             </div></div></div></div></div></div></div>
+
+
+
+        <div class="ui section divider"></div>
+        <p>
+        <h2 style="display: inline;" class="first">This Week</h2>&nbsp;&nbsp;
+        <b>All times are Eastern (Ann Arbor)</b>&nbsp;&nbsp;
+        </p>
+        <div class="ui six cards">
+
+          <div class="ui card week">
+            <div class="content">
+              <div class="header" style="text-align: center;">
+                Sun 12/6
+              </div>
+            </div>
+          </div>
+
+          <div class="ui card week">
+            <div class="content">
+              <div class="header" style="text-align: center;">
+                Mon 12/7
+              </div>
+            </div>
+          </div>
+
+          <div class="ui card week">
+            <div class="content">
+              <div class="header" style="text-align: center;">
+                Tue 12/8
+              </div>
+            </div>
+          </div>
+
+          <div class="ui card week">
+            <div class="content">
+              <div class="header" style="text-align: center;">
+                Wed 12/9
+              </div>
+            </div>
+          </div>
+
+          <div class="ui card week">
+            <div class="content">
+              <div class="header" style="text-align: center;">
+                Thu 12/10
+              </div>
+            </div>
+          </div>
+
+          <div class="ui card week">
+            <div class="content">
+              <div class="header" style="text-align: center;">
+                Fri 12/11
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Readings -->
+        <div class="ui six cards">
+          <div class="ui card week" style="visibility: hidden;">
+          </div>
+
+          <div class="ui card week">
+            <div class="content">
+              <div class="header">
+                Lecture 22 Worksheet
+              </div>
+              <div class="description">
+                <p><b>Due 12/7 11:59pm</b></p>
+                <p><a target="_blank" href="https://learn.zybooks.com/zybook/UMICHEECS183Fall2020">
+                  <i class="book icon"></i>
+                    zyBooks 18.1-18.10</a></p>
+                <p><a target="_blank" href="https://docs.google.com/document/d/1Yf6R88BURest_ILr4Pu6s6F6bLsdu4ftbkPB9ooeUQ4/edit?usp=sharing">
+                  <i class="file icon"></i>
+                    Worksheet</a></p>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="ui card week">
+            <div class="content">
+              <div class="header">
+                Lecture 22 Assignment
+              </div>
+              <div class="description">
+                <p><b>Due 12/8 11:59pm</b></p>
+                <p><a target="_blank" href="https://docs.google.com/document/d/13d6JNlh1HYWdH-KBWv1t_Vlrv1fwtoZ38Gn9mXemZKw/edit?usp=sharing">
+                  <i class="edit icon"></i>
+                  Assignment</a></p>
+              </div>
+            </div>
+
+            <div class="content">
+              <div class="header" style="color:red;">
+                Final Project
+              </div>
+              <div class="description">
+                <p style="color:red;">Due 12/8 11:59pm. <br /> No late days</p>
+                <p><a target="_blank" href="https://eecs183.github.io/fp-elevators/">
+                  </a></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="ui card week" style="visibility: hidden;">
+          </div>
+
+		      <div class="ui card week" style="visibility: hidden;">
+          </div>
+
+           <div class="ui card week">
+            <div class="content">
+              <div class="header" style="color:red;">
+                8AM: <br />Course & Staff Evaluation Survey
+              </div>
+
+              <div class="description">
+                <p style="color:red;">Due 12/11 8:00 AM. </p>
+                <p><a>
+                  <i class="edit icon"></i>
+                  Link was emailed</a></p>
+              </div>
+            </div>
+
+            <div class="content">
+              <div class="header" style="color:red;">
+                8AM: <br />Exit Survey
+              </div>
+              <div class="description">
+                <p style="color:red;">Due 12/11 8:00 AM. </p>
+                <p><a target="_blank" href="https://docs.google.com/forms/d/1YDNMYWLIRjiZNtUFND_9Eyd-d2mvRR1V2uEvlHeLGeI/viewform">
+                  <i class="edit icon"></i>
+                  Survey Link</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+<!--
+          <div class="ui card week" style="visibility: hidden;">
+          </div>
+        </div>
+
+        <div class="ui six cards">
+          <div class="ui card week" style="visibility: hidden;">
+          </div>
+
+          <div class="ui card week" style="visibility: hidden;">
+          </div>
+
+          <div class="ui card week" style="visibility: hidden;">
+          </div>
+
+          <div class="ui card week" style="visibility: hidden;">
+          </div>
+
+          <div class="ui card week" style="width: 30%">
+            <div class="content">
+              <div class="header">
+                Lab Team Meetings
+              </div>
+              <div class="description">
+                <p>
+                  <a href="https://docs.google.com/document/d/1k-EnNJFcix11slRYlzb42ORZ4IzGS0zZTan5MYoDV4A">
+                    <i class="file icon"></i>Lab 10 Worksheet</a>
+                  (due 12/7 11:55pm)
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+-->
+        <div class="ui six cards">
+          <div class="ui card week" style="visibility: hidden;">
+          </div>
+
+           <div class="ui card week" style="width: 35%">
+            <div class="content">
+              <div class="header" style="display: inline;">
+                1-1 Help in Office Hours
+              </div>
+              Monday and Tuesday, 8-10am and 2-8pm
+              <div class="description">
+                  Talk with course staff about anything, including setting up your computer, lectures, labs, projects, and assessments.
+                  <br/>
+                  Sign-up website is <a target="_blank" href="http://eecsoh.org">eecsoh.org</a>,
+                  instructions are <a target="_blank"
+                    href="https://docs.google.com/document/d/1NjPevvOowAmVaNOeaT0N8NbYfBjhU1iMWPUz-8roqPI">here</a>.
+              </div>
+            </div>
+          </div>
+        </div>
+<!--
+          <div class="ui card week" style="width: 80%">
+            <div class="content">
+              <div class="header" style="display: inline;">
+                1-1 Help in Office Hours
+              </div>
+              Monday through Friday, 8-10am and 2-8pm
+              <div class="description">
+                  Talk with course staff about anything, including setting up your computer, lectures, labs, projects, and assessments.
+                  <br/>
+                  Sign-up website is <a target="_blank" href="http://eecsoh.org">eecsoh.org</a>,
+                  instructions are <a target="_blank"
+                    href="https://docs.google.com/document/d/1NjPevvOowAmVaNOeaT0N8NbYfBjhU1iMWPUz-8roqPI">here</a>.
+              </div>
+            </div>
+          </div>
+        </div>
+-->
+        <div class="ui section divider"></div>
+        <div class="ui text container" id="projects">
+          <h2 class="first">Projects</h2>
+          <div class="ui three stackable cards">
+            <a class="ui raised card" target="_blank" href="https://eecs183.github.io/p1-recipes/">
+              <div class="content">
+                <div class="header">
+                  Project 1
+                </div>
+                <div class="description">
+                  <p>Focaccia Bread</p>
+                </div>
+              </div>
+            </a>
+
+            <a class="ui raised card" target="_blank" href="https://eecs183.github.io/p2-birthdays/">
+              <div class="content">
+                <div class="header">
+                  Project 2
+                </div>
+                <div class="description">
+                  <p>Birthdays</p>
+                </div>
+              </div>
+            </a>
+
+            <a class="ui raised card" target="_blank" href="https://eecs183.github.io/p3-0hh1/">
+              <div class="content">
+                <div class="header">
+                  Project 3
+                </div>
+                <div class="description">
+                  <p>0hh1</p>
+                </div>
+              </div>
+            </a>
+
+            <a class="ui raised card" target="_blank" href="https://eecs183.github.io/p4-coolpics/">
+              <div class="content">
+                <div class="header">
+                  Project 4
+                </div>
+                <div class="description">
+                  <p>CoolPics</p>
+                </div>
+              </div>
+            </a>
+
+            <a class="ui raised card" target="_blank" href="https://eecs183.github.io/fp-elevators/">
+              <div class="content">
+                <div class="header">
+                  Final Project
+                </div>
+                <div class="description">
+                  <p>Elevators</p>
+                  <p style="color:red;">Due 12/8 11:59pm, no late days or extra credit</p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Info section -->
+        <div class="ui section divider"></div>
+        <div class="ui text container" id="course_info">
+          <h2 class="first">Course Essentials</h2>
+          <div class="ui three stackable cards">
+            <a class="ui raised card" target="_blank"
+              href="https://calendar.google.com/calendar/selfsched?sstoken=UUM1aWxTbDhXSG9ufGRlZmF1bHR8NDg3MWFiMDc2ZTE3Y2YyOTZhMjkyOGEwN2JkODE3OGI">
+              <div class="content">
+                <div class="header">
+                  Professor Office Hours
+                </div>
+                <div class="description">
+                  <p>Make an appointment with faculty</p>
+                </div>
+              </div>
+            </a>
+
+            <a class="ui raised card" target="_blank" href="assets/Syllabus.pdf">
+              <div class="content">
+                <div class="header">
+                  Syllabus
+                </div>
+                <div class="description">
+                  <p>All the details</p>
+                </div>
+              </div>
+            </a>
+
+                <a class="ui raised card" onclick="window.location.href='staff.html'" target="_blank">
+              <div class="content">
+                <div class="header">
+                  People
+                </div>
+                <div class="description">
+                  <p>Meet the course staff</p>
+                </div>
+              </div>
+            </a>
+
+            <a class="ui raised card" target="_blank" href="https://umich.instructure.com/courses/376608">
+              <div class="content">
+                <div class="header">
+                  Canvas
+                </div>
+                <div class="description">
+                  <p>Assignments and Grades</p>
+                </div>
+              </div>
+            </a>
+
+            <a class="ui raised card" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSd8jwrDwrAL3kZra5XVB1L9TztZ3XJVIcuZ-9HC4lSP8j5GzA/viewform">
+              <div class="content">
+                <div class="header">
+                  Submit SSD Form
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Info section -->
+
+      <!-- Projects section -->
+      <div class="ui section divider"></div>
+      <div class="ui text container" id="tutorials">
+        <h2 class="first">Tutorials</h2>
+        <div class="ui three stackable cards">
+          <a class="ui raised card" target="_blank"
+          	href="https://docs.google.com/document/d/1NjPevvOowAmVaNOeaT0N8NbYfBjhU1iMWPUz-8roqPI">
+            <div class="content">
+              <div class="header">
+                Signing up for Office Hours
+              </div>
+            </div>
+          </a>
+
+          <a class="ui raised card" target="_blank"
+          	href="https://docs.google.com/document/d/1DlILOzmD4wfsvaIA0ExHGvpVLfhWjxZpS1u7gKjnD28">
+            <div class="content">
+              <div class="header">
+                zyBooks and CodeLab Registration
+              </div>
+            </div>
+          </a>
+
+          <a class="ui raised card" target="_blank"
+            href="https://docs.google.com/document/d/13wOV3RmhoduC9gNynDTAwPExp_jBme1vx5_7x8NR1EQ">
+            <div class="content">
+              <div class="header">
+                Windows Computer Setup
+              </div>
+            </div>
+          </a>
+
+          <a class="ui raised card" target="_blank"
+            href="https://docs.google.com/document/d/1wHJlDGerJ_ZEWUkL5aavb82IayuKsZRQNtsQu8f0mNo">
+            <div class="content">
+              <div class="header">
+                Mac Computer Setup
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Schedule section -->
+      <div class="ui section divider"></div>
+      <div id="info">
+        <h2>Schedule of Topics</h2>
+      </div>
+      <table class="ui striped celled table">
+        <thead>
+          <tr>
+            <th>Week</th>
+            <th class="four wide">Lecture 1</th>
+            <th class="four wide">Lecture 2</th>
+            <th>Labs</th>
+            <th class="three wide">Projects and Assessments</th>
+          </tr>
+        </thead>
+        <tr>
+          <td>Aug. 31 - Sept. 4</td>
+          <td>Lecture 1 <br/>
+            <b>Welcome to 183</b><br/>
+            <a target="_blank"
+            	href="https://docs.google.com/document/d/1qufY8AtdRpLoy1EzHjR0Kle7FSTaIbJIiDHqPVki3z4">
+              <i class="file icon"></i>Worksheet</a><br/>
+            <a target="_blank"
+            	href="https://docs.google.com/document/d/10aMG7n_curCXOQBBpVW_ktk3VTTYDBs4bjVve9h46ao">
+              <i class="edit icon"></i>Assignment</a>
+          </td>
+          <td>Lecture 2 <br />
+            <b>Introduction to C++</b><br/>
+            <a target="_blank"
+            	href="https://docs.google.com/document/d/1lE_Ch90PHsJPUeaGS6p_pZW0IStVLxhlBMK5Z11wvJg">
+              <i class="file icon"></i>Worksheet</a><br/>
+            <a target="_blank"
+            	href="https://docs.google.com/document/d/19AmWYipMh9D57rihi4QXQUB76JAEEC9-5zkW_9fqLwY">
+              <i class="edit icon"></i>Assignment</a>
+          </td>
+          <td>No Lab</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Sept. 7 - Sept. 11</td>
+          <td>No Lecture
+          </td>
+          <td>Lecture 3 <br />
+            <b>Data Types</b><br />
+            <a target="_blank" href="https://docs.google.com/document/d/1Ae843rkNVaimYh2GeU32Lzv4PDhcrU-bo6aj2j3nLSw">
+              <i class="file icon"></i>Worksheet</a><br />
+            <a target="_blank" href="https://docs.google.com/document/d/1OWbUDpCMXDul4Ie7R4B3QOe5O2xo84X-YpyU7sNwNBo">
+              <i class="edit icon"></i>Assignment</a>
+          </td>
+          <td>Lab 1 <br /> (at Wolverine Access time)</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Sept. 14 - Sept. 18</td>
+          <td>Lecture 4 <br />
+            <b>Functions 1</b><br />
+            <a target="_blank" href="https://docs.google.com/document/d/1rN31fpYuus6nyv9nDqQhMi2an0D1hfB_-zcx1Np53P8">
+              <i class="file icon"></i>Worksheet</a><br />
+            <a target="_blank" href="https://docs.google.com/document/d/12qmPJFDBjOvWMxhERL4-nkZqMCi8YNIqaTWhJQfecLw">
+              <i class="edit icon"></i>Assignment</a>
+          </td>
+          <td>Lecture 5 <br />
+            <b>Functions 2</b><br />
+            <a target="_blank" href="https://docs.google.com/document/d/1w4lBCVGXEZ0KUcFXnF2nta0assxLX6l0-6Kx9OS9Smo">
+              <i class="file icon"></i>Worksheet</a><br />
+            <a target="_blank" href="https://docs.google.com/document/d/1-zaiOA7XhdflSjMRSH0r1W3BL6Ga-xnxf8lSA0ffBn8">
+              <i class="edit icon"></i>Assignment</a>
+          </td>
+          <td>Lab 2 <br /> (at Wolverine Access time)</td>
+          <td class="warning">Project 1 Due Sept. 18, 8pm</td>
+        </tr>
+        <tr>
+          <td>Sept. 21 - Sept. 25</td>
+          <td>Lecture 6 <br />
+            <b>Branching</b><br />
+            <a target="_blank" href="https://docs.google.com/document/d/14lfp3kXMgNcQ3PIUrtOkcqPUKu0pJ-fEHcPJtzJYbe0">
+              <i class="file icon"></i>Worksheet</a><br />
+            <a target="_blank" href="https://docs.google.com/document/d/13QXVe5bUjc6J5yIKlgUnP6dMbRftOzmc6WVlRlrz5mE">
+              <i class="edit icon"></i>Assignment</a>
+          </td>
+          <td>Lecture 7 <br />
+            <b>While Loops</b><br />
+            <a target="_blank" href="https://docs.google.com/document/d/1xLNgPr9EdOgm4W0mSNX1lp1G2FB78Jlv6BZ54WS3tK4">
+              <i class="file icon"></i>Worksheet</a><br />
+            <a target="_blank" href="https://docs.google.com/document/d/14LPgoCTvrbLhZqhD2DsWVccoaIpY8ApJtDiwnSa6e4U">
+              <i class="edit icon"></i>Assignment</a>
+          </td>
+          <td>Lab 3 <br /> (Th/F lab teams start)</td>
+          <td class="negative">Assessment 1 Sept. 25</td>
+        </tr>
+        <tr>
+          <td>Sept. 28 - Oct. 2</td>
+          <td>Lecture 8 <br />
+            <b>For Loops</b><br />
+            <a target="_blank" href="https://docs.google.com/document/d/1lPEI4AQW_crvDvfZnd2RSxuEDaUO8-nOQcNyG3bf1wQ">
+              <i class="file icon"></i>Worksheet</a><br />
+            <a target="_blank" href="https://docs.google.com/document/d/1LA-H-Pu27TefShJEEDXcg6YyEOB480hA291nCKKMcPs">
+              <i class="edit icon"></i>Assignment</a>
+          </td>
+          <td>No Lecture</td>
+          <td>Lab 4</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Oct. 5 - Oct. 9</td>
+          <td>Lecture 9 <br />
+            <b>Strings</b><br />
+            <a target="_blank" href="https://docs.google.com/document/d/1hcccIhnCpm9spMPGD9b2Pmof7A9Z58mWgH78vUMQwyk">
+              <i class="file icon"></i>Worksheet</a><br />
+            <a target="_blank" href="https://docs.google.com/document/d/1ZP08WqKHANre9D8wa21Ov-eDD4mMW9aV8EY9EXMlp7M">
+              <i class="edit icon"></i>Assignment</a>
+          </td>
+          <td>Lecture 10 <br />
+            <b>Pass by Reference</b><br />
+            <a target="_blank" href="https://docs.google.com/document/d/1fCfTp5S7kVsWYGspXDOgdfRa1dXXU_e-8is0PuhuhbI">
+              <i class="file icon"></i>Worksheet</a><br />
+            <a target="_blank" href="https://docs.google.com/document/d/1YBQOmLPqCDLVd6kd25oItnXGTUbhY1-upIiGSjxa4DI">
+              <i class="edit icon"></i>Assignment</a>
+          </td>
+          <td>Lab 5</td>
+          <td class="warning">Project 2 Due <b>Wednesday</b> Oct. 7, 11:59pm</td>
+        </tr>
+        <tr>
+          <td>Oct. 12 - Oct. 16</td>
+          <td>Lecture 11 <br />
+            <b>Arrays 1</b><br />
+            <a target="_blank" href="https://docs.google.com/document/d/1iMotNks2briaE0MlrHtOVdaKD9d89eYy0WifP0ork8Y">
+              <i class="file icon"></i>Worksheet</a><br />
+            <a target="_blank" href="https://docs.google.com/document/d/1naYul6Um5nAqC1Bjiw5N2DNxWY-t-0TsBmkfX-RxNps">
+              <i class="edit icon"></i>Assignment</a>
+          </td>
+          <td>Lecture 12 <br />
+            <b>Arrays 2</b><br />
+            <a target="_blank" href="https://docs.google.com/document/d/18_Gg_lvEKWDnX9pdSiuvNDweEQQCIyTvOyJNJDbWBgA">
+              <i class="file icon"></i>Worksheet</a><br />
+            <a target="_blank" href="https://docs.google.com/document/d/17uaGy8P4JL0Cgt0eIWLfuC6aag2d9iaRMEuTosVCNxw">
+              <i class="edit icon"></i>Assignment</a>
+          </td>
+          <td>No Lab</td>
+          <td class="negative">Assessment 2 Oct. 16</td>
+        </tr>
+        <tr>
+          <td>Oct. 19 - Oct. 23</td>
+          <td>Lecture 13 <br />
+            <b>File I/O</b><br />
+            <a target="_blank" href="https://docs.google.com/document/d/1oqtIH7g25BOhA4aiHSUFOX4DvCeXgvp44gNVONR4yJg">
+              <i class="file icon"></i>Worksheet</a><br />
+            <a target="_blank" href="https://docs.google.com/document/d/1KVn8z13HCMwwwlBtIymGY2EBbUlveCfA6wnynLgOKq0">
+              <i class="edit icon"></i>Assignment</a>
+          </td>
+          <td>Lecture 14 <br />
+            <b>Classes 1</b><br />
+            <a target="_blank" href="https://docs.google.com/document/d/12E6DGY1wDr0U1BR4LFHzQknl2A1ahiV-4Fcd12mOPeU">
+              <i class="file icon"></i>Worksheet</a><br />
+            <a target="_blank" href="https://docs.google.com/document/d/131hYz4pmucYQC-Fh6nNFhHnCnzZgJbY-wT_wZ1iTLFs">
+              <i class="edit icon"></i>Assignment</a>
+          </td>
+          <td>Lab 6</td>
+          <td class="warning">Project 3 Due Oct. 23, 11:59pm</td>
+        </tr>
+        <tr>
+          <td>Oct. 26 - Oct. 30</td>
+          <td>Lecture 15 <br />
+            <b>Classes 2</b><br />
+            <a target="_blank" href="https://docs.google.com/document/d/1is-F6ezblmavtBYGqGuw2boaSKrfiLoaBTiYrPN0hkk">
+              <i class="file icon"></i>Worksheet</a><br />
+            <a target="_blank" href="https://docs.google.com/document/d/1Fp1yEzIEhJbkeE6OZ6IrI1kHADL1RHJECfwtROeh-YM">
+              <i class="edit icon"></i>Assignment</a>
+          </td>
+          <td>Lecture 16 <br />
+            <b>Classes 3</b><br />
+            <a target="_blank" href="https://docs.google.com/document/d/1B3ayALhfBK8TigE047C7XtIvxEYcqXT25uE9tNiiRns">
+              <i class="file icon"></i>Worksheet</a><br />
+            <a target="_blank" href="https://docs.google.com/document/d/1IT5-ohbw_PwRVq4yrtmJEVwWSnzWSNVep1sf8COp_t0">
+              <i class="edit icon"></i>Assignment</a>
+          </td>
+          <td>Lab 7</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Nov. 2 - Nov. 6</td>
+          <td>Lecture 17 <br />
+            <b>Classes 4</b><br />
+            <a target="_blank" href="https://docs.google.com/document/d/1tsbPk0SEcqlbKq5IBOOk-rIUxfBYPP9izx7dYPi4jmg">
+              <i class="file icon"></i>Worksheet</a><br />
+            <i class="edit icon"></i>No Assignment
+          </td>
+          <td>No Lecture</td>
+          <td>Lab 8</td>
+          <td class="positive">ELECTION DAY <b>Tuesday</b>, Nov. 3</td>
+        </tr>
+        <tr>
+          <td>Nov. 9 - Nov. 13</td>
+          <td>No Lecture</td>
+          <td>
+            Lecture 18 <br/>
+            <b>Final Project and git</b><br />
+            <a target="_blank" href="https://docs.google.com/document/d/1y5JPAjXHdC24LcgH37UX0cE3-jY_oFX0nfTV6yW3q1A">
+              <i class="file icon"></i>Worksheet</a><br />
+              <i class="edit icon"></i>No Assignment
+          </td>
+          <td>Lab 9</td>
+          <td class="warning">Project 4 Due Nov. 13, 11:59pm</td>
+        </tr>
+        <tr>
+          <td>Nov. 16 - Nov. 20</td>
+          <td>
+            Lecture 19 <br/>
+            <b>Implicit Bias and Team Dynamics</b><br />
+            <a target="_blank" href="https://docs.google.com/document/d/10L7_hq7HGHYEJrIuS4XZUnuEVz5buJzM4E14jsJO3qU">
+              <i class="file icon"></i>Worksheet</a><br />
+            <a target="_blank" href="https://docs.google.com/document/d/1jefLJx4EogoSrKJx65W4cty_OlLUQ6bBEPySjhtVP6E">
+              <i class="edit icon"></i>Assignment</a>
+          </td>
+          <td>No Lecture</td>
+          <td>No Lab</td>
+          <td class="negative">Assessment 3 <b>Tuesday</b>, Nov. 17, 8-9:30pm</td>
+        </tr>
+        <tr>
+          <td colspan="5" style="text-align: center;">No Class &mdash; Thanksgiving Break</td>
+        </tr>
+        <tr>
+          <td>Nov. 30 - Dec. 3</td>
+          <td>
+            Lecture 20 <br/>
+            <b>Python 1</b><br />
+            <a target="_blank" href="https://docs.google.com/document/d/1SbcfMWmJFg7h4h5wforDLInmVWD81FZIyS6pS9TXANw/edit?usp=sharing">
+              <i class="file icon"></i>Worksheet</a><br />
+            <i class="edit icon"></i>No Assignment
+          </td>
+          <td>
+            Lecture 21 <br/>
+            <b>Python 2</b><br />
+            <a target="_blank" href="https://docs.google.com/document/d/1UMByPdjTsn5AA28vq8sEpBGqElopStt1v51-AQQSYXw/edit?usp=sharing">
+              <i class="file icon"></i>Worksheet</a><br />
+            <a target="_blank" href="https://docs.google.com/document/d/1Cuoo9nz2YCOHiJBkrdDK0lDGeRZdncC5DZjhvh6a5kE/edit?usp=sharing">
+              <i class="edit icon"></i>Assignment</a>
+          </td>
+          <td>Lab 10</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Dec. 7 - Dec. 11</td>
+          <td>
+            Lecture 22 <br/>
+            <b>Python 3</b><br />
+            <a target="_blank" href="https://docs.google.com/document/d/1Yf6R88BURest_ILr4Pu6s6F6bLsdu4ftbkPB9ooeUQ4/edit?usp=sharing">
+              <i class="file icon"></i>Worksheet</a><br />
+            <a target="_blank" href="https://docs.google.com/document/d/13d6JNlh1HYWdH-KBWv1t_Vlrv1fwtoZ38Gn9mXemZKw/edit?usp=sharing">
+              <i class="edit icon"></i>Assignment</a>
+          </td>
+          <td>Study Day</td>
+          <td>No Lab</td>
+          <td class="warning">Final Project Due <b>Tuesday</b> Dec. 8, 11:59pm</td>
+        </tr>
+        <tr>
+          <td colspan="5" style="text-align: center;">No Final Exam</td>
+        </tr>
+      </table>
+
+    </div><!-- ui text container -->
+    <br />
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script src="semantic/semantic.min.js"></script>
+
+  <script>
+  var coll = document.getElementsByClassName("collapsible");
+  var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+
+}
+
+    (function () {
+      renderSidebar();
+    })();
+
+
+    function isSmallScreen() {
+      return screen.width < 900;
+    }
+
+    function renderSidebar() {
+      $sidebar = $('.ui.sidebar');
+      $sidebar.sidebar({
+        dimPage: false,
+        transition: 'overlay',
+        mobileTransition: 'overlay',
+        exclusive: false,
+        closable: false
+      });
+      $sidebar.sidebar('attach events', '#left-sidebar-toggle');
+
+      if (!isSmallScreen()) {
+        $sidebar.sidebar('toggle');
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>

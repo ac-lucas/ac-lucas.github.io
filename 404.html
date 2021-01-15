@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="EECS 183" />
+  <meta name="keywords"
+    content="EECS183, EECS 183, Elementary Programming Concepts, University of Michigan Computer Science" />
+  <title>404: EECS 183</title>
+  <link rel="stylesheet" type="text/css" href="docs/semantic/semantic.min.css" />
+  <link href="https://umich.edu/favicon.ico" rel="shortcut icon" />
+  <style>
+    /* This fixes a bug in Semantic UI on iOS that breaks scrolling back to
+     * the top by tapping the status bar.
+     * https://github.com/Semantic-Org/Semantic-UI/issues/1985#issuecomment-110051913
+     */
+    html,
+    body {
+      height: initial;
+      box-sizing: border-box !important;
+    }
+
+    img.icon {
+      width: 60px !important;
+      height: 60px !important;
+      text-align: center;
+    }
+    .sidebar {
+      background-color: #343c4c !important;
+      padding: 0px !important;
+    }
+
+    .sidebar .item {
+      color: white !important;
+    }
+
+    .sidebar .item h2 {
+      font-weight: lighter;
+      font-family: "courier";
+    }
+    .menu .item {
+      padding: 10px !important;
+      text-align: right !important;
+    }
+
+    .menu .item:hover {
+      background-color: white !important;
+    }
+
+    .sidebar .item:hover {
+      color: #343c4c !important;
+    }
+
+    .staff
+    {
+      padding: 7px !important;
+      margin-right: 12px !important;
+    }
+    .message a {
+      text-decoration: underline;
+    }
+
+    .collapsible h2:before {
+  content: '\002B';
+  font-weight: bold;
+  float: none;
+  margin-left: 5px;
+}
+
+.active h2:before {
+  content: "\2212";
+}
+
+.vote  {
+
+  margin-left: auto;
+  margin-right: auto;
+  display: none;
+  overflow: hidden;
+}
+
+.vote img {
+  height: auto;
+  width: 100%;
+}
+    .card .header {
+      font-size: 1.1em !important;
+    }
+
+    .card .content {
+      padding: .5em !important;
+      padding-top: .8em !important;
+    }
+
+    .card .week {
+      box-shadow: none !important;
+    }
+
+    .row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+  .staff-picture {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  </style>
+</head>
+
+<body>
+  <!--Navigation bar-->
+  <div class="ui left vertical sidebar labeled icon menu">
+      <a class="item" onclick="window.location.href='docs/index.html'" target="_blank">
+      <h2>Home</h2>
+    </a>
+
+    <a class="item" onclick="window.location.href='docs/staff.html'" target="_blank">
+      <h2>Staff Labs</h2>
+    </a>
+
+    <a class="item" href="https://piazza.com/class/kdhi9admydr1od" target="_blank">
+      <h2>Piazza</h2>
+    </a>
+    <a class="item" href="http://eecsoh.org" target="_blank">
+      <h2>Office Hours</h2>
+    </a>
+    <a class="item"
+      href="https://docs.google.com/forms/d/e/1FAIpQLScOo-IgJymwcIPgY-Fk1fTsvlyz_NgUQlbYeqiQFFVDDaJEAw/viewform?usp=sf_link"
+      target="_blank">
+      <h2>Admin Form</h2>
+    </a>
+    <a class="item" href="https://drive.google.com/drive/u/0/folders/1I-8wvu4m6i7ZcMw8ppUM9K5plort5mXU" target="_blank">
+    <h2>Files</h2>
+    </a>
+    <!--  <a class="item" href="https://autograder.io/web/course/78" target="_blank">
+      <h2>Autograder</h2>
+    </a>
+  -->
+    <a class="item" href="https://ecoach.ai.umich.edu/coach/79/home/" target="_blank">
+
+      <h2>ECoach</h2>
+    </a>
+    <a class="item" href="https://www.gradescope.com/courses/154563" target="_blank">
+
+      <h2>Gradescope</h2>
+    </a>
+    <a class="item" href="https://learn.zybooks.com/zybook/UMICHEECS183Fall2020" target="_blank">
+
+      <h2>zyBooks</h2>
+    </a>
+    <a class="item" href="https://codelab.turingscraft.com/courses" target="_blank">
+
+      <h2>CodeLab</h2>
+    </a>
+    <a class="item" href="https://lobster.eecs.umich.edu" target="_blank">
+
+      <h2>Lobster</h2>
+    </a>
+  </div>
+<!--end of Navigation bar-->
+
+
+  <!-- Main page  -->
+  <div class="pusher">
+    <div class="ui text container">
+      <button class="ui right floated icon button" id="left-sidebar-toggle">
+         <i class="bars icon"></i>
+       </button>
+
+      <table style="margin-top: 1em;">
+        <tr>
+          <td><img src="docs/img/llama.jpg" width="150px"/></td>
+          <td style="margin-left: 1em">
+            <h1>404 Error: Ope!</h1>
+            <p>This page doesn't exist or isn't available yet</p>
+            <p><i><a onclick="window.location.href='docs/index.html'" target="_blank">Try going back home instead</a></i></p>
+          </td>
+        </tr>
+      </table>
+
+    </div><!-- ui text container -->
+    <br />
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script src="docs/semantic/semantic.min.js"></script>
+
+  <script>
+
+    (function () {
+      renderSidebar();
+    })();
+
+
+    function isSmallScreen() {
+      return screen.width < 900;
+    }
+
+    function renderSidebar() {
+      $sidebar = $('.ui.sidebar');
+      $sidebar.sidebar({
+        dimPage: false,
+        transition: 'overlay',
+        mobileTransition: 'overlay',
+        exclusive: false,
+        closable: false
+      });
+      $sidebar.sidebar('attach events', '#left-sidebar-toggle');
+
+      if (!isSmallScreen()) {
+        $sidebar.sidebar('toggle');
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>
